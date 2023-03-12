@@ -70,87 +70,98 @@ export default function Login() {
     setSignupSucessful(true);
   };
 
+  const signInWithGithub = (): void => {
+    context?.supabase?.auth.signInWithOAuth({
+      provider: "github",
+    });
+  };
+
   return (
     <Container maxWidth="md">
-      <Paper
-        sx={{
-          padding: 2,
-          display: "grid",
-          gridTemplateColumns: "1fr min-content 1fr",
-          columnGap: 2,
-          justifyItems: "center",
-        }}
-      >
+      <Paper>
         <Box
           sx={{
+            padding: 2,
             display: "grid",
-            gridTemplateRows: "repeat(3, min-content)",
-            rowGap: 2,
-            width: "100%",
+            gridTemplateColumns: "1fr min-content 1fr",
+            columnGap: 2,
             justifyItems: "center",
           }}
         >
-          <Typography variant="h4">Sign in</Typography>
-          <TextField
-            label="Email"
-            fullWidth
-            value={login.email}
-            onChange={changeLogin("email")}
-          />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            value={login.password}
-            onChange={changeLogin("password")}
-          />
-          <Box sx={{ width: "100%" }}>
-            <Button variant="contained" fullWidth onClick={loginUser}>
-              Sign in
-            </Button>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateRows: "repeat(3, min-content)",
+              rowGap: 2,
+              width: "100%",
+              justifyItems: "center",
+            }}
+          >
+            <Typography variant="h4">Sign in</Typography>
+            <TextField
+              label="Email"
+              fullWidth
+              value={login.email}
+              onChange={changeLogin("email")}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              value={login.password}
+              onChange={changeLogin("password")}
+            />
+            <Box sx={{ width: "100%" }}>
+              <Button variant="contained" fullWidth onClick={loginUser}>
+                Sign in
+              </Button>
+            </Box>
+          </Box>
+          <Divider orientation="vertical" />
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateRows: "repeat(3, min-content)",
+              rowGap: 2,
+              width: "100%",
+              justifyItems: "center",
+            }}
+          >
+            <Typography variant="h4">Sign up</Typography>
+            <TextField
+              label="Email"
+              fullWidth
+              value={signup.email}
+              onChange={changeSignUp("email")}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              value={signup.password}
+              onChange={changeSignUp("password")}
+            />
+            <Box sx={{ width: "100%" }}>
+              <Button variant="contained" fullWidth onClick={signupUser}>
+                Sign Up
+              </Button>
+              {signupSucessful && (
+                <Typography>
+                  <Icon color="success">
+                    <CheckCircleIcon />
+                  </Icon>{" "}
+                  Sign up successful. Check your mail box
+                </Typography>
+              )}
+              {signupError && (
+                <Typography color="error">{signupError.message}</Typography>
+              )}
+            </Box>
           </Box>
         </Box>
-        <Divider orientation="vertical" />
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateRows: "repeat(3, min-content)",
-            rowGap: 2,
-            width: "100%",
-            justifyItems: "center",
-          }}
-        >
-          <Typography variant="h4">Sign up</Typography>
-          <TextField
-            label="Email"
-            fullWidth
-            value={signup.email}
-            onChange={changeSignUp("email")}
-          />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            value={signup.password}
-            onChange={changeSignUp("password")}
-          />
-          <Box sx={{ width: "100%" }}>
-            <Button variant="contained" fullWidth onClick={signupUser}>
-              Sign Up
-            </Button>
-            {signupSucessful && (
-              <Typography>
-                <Icon color="success">
-                  <CheckCircleIcon />
-                </Icon>{" "}
-                Sign up successful. Check your mail box
-              </Typography>
-            )}
-            {signupError && (
-              <Typography color="error">{signupError.message}</Typography>
-            )}
-          </Box>
-        </Box>
+        <Button variant="contained" onClick={signInWithGithub}>
+          Sign in with Github
+        </Button>
       </Paper>
     </Container>
   );
