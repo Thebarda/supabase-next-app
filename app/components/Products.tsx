@@ -1,8 +1,9 @@
 "use client";
 
 import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Product } from "../models";
 
-const Products = ({ products }) => {
+const Products = ({ products }: { products: Array<Product> }) => {
   return (
     <Box
       sx={{
@@ -12,12 +13,12 @@ const Products = ({ products }) => {
         columnGap: 2,
       }}
     >
-      {products.map((product) => (
-        <Card key={product.id}>
+      {products.map(({ id, name, description, price }) => (
+        <Card key={id}>
           <CardContent>
-            <Typography variant="h4">{product.name}</Typography>
-            <Typography variant="body1">{product.description}</Typography>
-            <Typography variant="body1">{product.price}</Typography>
+            <Typography variant="h4">{name}</Typography>
+            <Typography variant="body1">{description}</Typography>
+            <Typography variant="body1">{price}</Typography>
           </CardContent>
         </Card>
       ))}

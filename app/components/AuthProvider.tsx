@@ -1,8 +1,13 @@
 "use client";
 
+import React from "react";
 import { useSupabase } from "./SupabaseProvider";
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element | null => {
   const context = useSupabase();
 
   if (context && !context.session) {
@@ -11,7 +16,7 @@ const AuthProvider = ({ children }) => {
     return null;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default AuthProvider;
