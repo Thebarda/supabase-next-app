@@ -22,7 +22,6 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   server-only: ^0.0.1
-  tss-react: ^4.7.5
   typescript: 4.9.5
 
 dependencies:
@@ -47,7 +46,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   server-only: 0.0.1
-  tss-react: 4.7.5_jynkn57d3ch57pomn3pmvrz6qy
   typescript: 4.9.5
 
 packages:
@@ -2916,24 +2914,6 @@ packages:
 
   /tslib/2.5.0:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
-    dev: false
-
-  /tss-react/4.7.5_jynkn57d3ch57pomn3pmvrz6qy:
-    resolution: {integrity: sha512-ITzVbO1TTey5KTKuE3QoYcyemugBbDyvhWys8qINu4mRDImlwDaVXTm+bA6XkRaZQlFy2fz36ieUA0gEjpzYZA==}
-    peerDependencies:
-      '@emotion/react': ^11.4.1
-      '@emotion/server': ^11.4.0
-      react: ^16.8.0 || ^17.0.2 || ^18.0.0
-    peerDependenciesMeta:
-      '@emotion/server':
-        optional: true
-    dependencies:
-      '@emotion/cache': 11.10.5
-      '@emotion/react': 11.10.6_pmekkgnqduwlme35zpnqhenc34
-      '@emotion/serialize': 1.1.1
-      '@emotion/server': 11.10.0
-      '@emotion/utils': 1.2.0
-      react: 18.2.0
     dev: false
 
   /tsutils/3.21.0_typescript@4.9.5:

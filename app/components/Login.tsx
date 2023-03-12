@@ -11,22 +11,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { makeStyles } from "tss-react/mui";
 import { useSupabase } from "./SupabaseProvider";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-const useStyles = makeStyles()((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-    display: "grid",
-    gridTemplateColumns: "1fr min-content 1fr",
-    columnGap: theme.spacing(2),
-    justifyItems: "center",
-  },
-}));
-
 export default function Login() {
-  const { classes } = useStyles();
   const context = useSupabase();
 
   const [login, setLogin] = useState({
@@ -78,7 +66,15 @@ export default function Login() {
 
   return (
     <Container maxWidth="md">
-      <Paper className={classes.root}>
+      <Paper
+        sx={{
+          padding: 2,
+          display: "grid",
+          gridTemplateColumns: "1fr min-content 1fr",
+          columnGap: 2,
+          justifyItems: "center",
+        }}
+      >
         <Box
           sx={{
             display: "grid",
