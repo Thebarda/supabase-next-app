@@ -32,14 +32,20 @@ export default function Login() {
 
   const changeLogin =
     (property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setLogin({ ...login, [property]: e.target.value });
+      setLogin((currentLogin) => ({
+        ...currentLogin,
+        [property]: e.target.value,
+      }));
     };
 
   const changeSignUp =
     (property: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setSignupSucessful(false);
       setSignupError(null);
-      setSignup({ ...login, [property]: e.target.value });
+      setSignup((currentSignup) => ({
+        ...currentSignup,
+        [property]: e.target.value,
+      }));
     };
 
   const loginUser = (): void => {
@@ -51,8 +57,8 @@ export default function Login() {
 
   const signupUser = async (): Promise<void> => {
     const data = await context?.supabase?.auth.signUp({
-      email: login.email,
-      password: login.password,
+      email: signup.email,
+      password: signup.password,
     });
 
     if (data?.error) {
