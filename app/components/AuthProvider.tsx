@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useSupabase } from "./SupabaseProvider";
 
@@ -9,9 +10,10 @@ const AuthProvider = ({
   children: React.ReactNode;
 }): JSX.Element | null => {
   const context = useSupabase();
+  const router = useRouter();
 
   if (context && !context.session) {
-    window.location.href = "/authentication";
+    router.push("/authentication");
 
     return null;
   }

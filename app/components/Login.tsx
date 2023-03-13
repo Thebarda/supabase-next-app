@@ -10,12 +10,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSupabase } from "./SupabaseProvider";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const context = useSupabase();
+  const router = useRouter();
 
   const [login, setLogin] = useState({
     email: "",
@@ -75,6 +77,14 @@ export default function Login() {
       provider: "github",
     });
   };
+
+  useEffect(() => {
+    if (!context?.session) {
+      return;
+    }
+
+    router.push("/");
+  }, [context?.session]);
 
   return (
     <Container maxWidth="md">
